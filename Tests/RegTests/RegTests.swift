@@ -9,6 +9,7 @@ final class RegTests: XCTestCase {
         ("test_hasMatch_returnsFalseWhenNoMatches", test_hasMatch_returnsFalseWhenNoMatches),
         ("test_hasMatch_returnsTrueWhenMatches", test_hasMatch_returnsTrueWhenMatches),
         ("test_firstMatch_returnsNilWhenNoMatches", test_firstMatch_returnsNilWhenNoMatches),
+        ("test_firstMatch_returnsFirstMatchWhenMatches", test_firstMatch_returnsFirstMatchWhenMatches),
     ]
 
     private let regexes: [Regex] = [
@@ -90,4 +91,14 @@ final class RegTests: XCTestCase {
         }
     }
 
+    func test_firstMatch_returnsFirstMatchWhenMatches() {
+        regexes.enumerated().forEach { idx, regex in
+            let str = matchingStrings[idx]
+
+            let result = regex.firstMatch(in: str)
+
+            let expected = expectedResults[idx].first!
+            XCTAssertEqual(result, expected)
+        }
+    }
 }
