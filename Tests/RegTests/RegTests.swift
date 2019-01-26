@@ -101,4 +101,6 @@ final class RegTests: XCTestCase {
             XCTAssertEqual(result, expected)
         }
     }
+
+    //TODO: Add operator tests
 }
