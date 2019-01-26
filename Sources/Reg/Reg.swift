@@ -55,6 +55,7 @@ public struct Regex: ExpressibleByStringLiteral {
 
 // MARK: Operator related
 infix operator =~
+infix operator !~
 
 extension Regex {
 
@@ -66,4 +67,11 @@ extension Regex {
         return regex.hasMatch(in: string)
     }
 
+    public static func !~ (string: String, regex: Regex) -> Bool {
+        return !regex.hasMatch(in: string)
+    }
+
+    public static func !~(regex: Regex, string: String) -> Bool {
+        return !regex.hasMatch(in: string)
+    }
 }
