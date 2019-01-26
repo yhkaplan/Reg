@@ -7,6 +7,7 @@ final class RegTests: XCTestCase {
         ("test_matches_returnsEmptyArrayWhenNoMatches", test_matches_returnsEmptyArrayWhenNoMatches),
         ("test_matches_returnsEachMatch", test_matches_returnsEachMatch),
         ("test_hasMatch_returnsFalseWhenNoMatches", test_hasMatch_returnsFalseWhenNoMatches),
+        ("test_hasMatch_returnsTrueWhenMatches", test_hasMatch_returnsTrueWhenMatches),
     ]
 
     private let regexes: [Regex] = [
@@ -65,6 +66,16 @@ final class RegTests: XCTestCase {
             let result = regex.hasMatch(in: str)
 
             XCTAssertFalse(result)
+        }
+    }
+
+    func test_hasMatch_returnsTrueWhenMatches() {
+        regexes.enumerated().forEach { idx, regex in
+            let str = matchingStrings[idx]
+
+            let result = regex.hasMatch(in: str)
+
+            XCTAssertTrue(result)
         }
     }
 
