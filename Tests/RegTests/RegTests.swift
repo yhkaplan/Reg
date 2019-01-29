@@ -10,6 +10,10 @@ final class RegTests: XCTestCase {
         ("test_hasMatch_returnsTrueWhenMatches", test_hasMatch_returnsTrueWhenMatches),
         ("test_firstMatch_returnsNilWhenNoMatches", test_firstMatch_returnsNilWhenNoMatches),
         ("test_firstMatch_returnsFirstMatchWhenMatches", test_firstMatch_returnsFirstMatchWhenMatches),
+        ("test_hasMatchEqualsOperator_returnsFalseWhenNoMatches", test_hasMatchEqualsOperator_returnsFalseWhenNoMatches),
+        ("test_hasMatchEqualsOperator_returnsTrueWhenMatches", test_hasMatchEqualsOperator_returnsTrueWhenMatches),
+        ("test_hasMatchNotEqualsOperator_returnsTrueWhenNoMatches", test_hasMatchNotEqualsOperator_returnsTrueWhenNoMatches),
+        ("test_hasMatchNotEqualsOperator_returnsFalseWhenMatches", test_hasMatchNotEqualsOperator_returnsFalseWhenMatches),
     ]
 
     private let regexes: [Regex] = [
@@ -102,5 +106,51 @@ final class RegTests: XCTestCase {
         }
     }
 
-    //TODO: Add operator tests
+    func test_hasMatchEqualsOperator_returnsFalseWhenNoMatches() {
+        regexes.enumerated().forEach { idx, regex in
+            let str = nonMatchingStrings[idx]
+
+            let result1 = regex =~ str
+            let result2 = str =~ regex
+
+            XCTAssertFalse(result1)
+            XCTAssertFalse(result2)
+        }
+    }
+
+    func test_hasMatchEqualsOperator_returnsTrueWhenMatches() {
+        regexes.enumerated().forEach { idx, regex in
+            let str = matchingStrings[idx]
+
+            let result1 = regex =~ str
+            let result2 = str =~ regex
+
+            XCTAssertTrue(result1)
+            XCTAssertTrue(result2)
+        }
+    }
+
+    func test_hasMatchNotEqualsOperator_returnsTrueWhenNoMatches() {
+        regexes.enumerated().forEach { idx, regex in
+            let str = nonMatchingStrings[idx]
+
+            let result1 = regex !~ str
+            let result2 = str !~ regex
+
+            XCTAssertTrue(result1)
+            XCTAssertTrue(result2)
+        }
+    }
+
+    func test_hasMatchNotEqualsOperator_returnsFalseWhenMatches() {
+        regexes.enumerated().forEach { idx, regex in
+            let str = matchingStrings[idx]
+
+            let result1 = regex !~ str
+            let result2 = str !~ regex
+
+            XCTAssertFalse(result1)
+            XCTAssertFalse(result2)
+        }
+    }
 }
