@@ -1,8 +1,7 @@
-import XCTest
 import Reg // Only testing public funcs so no testable
+import XCTest
 
 final class RegTests: XCTestCase {
-
     static var allTests = [
         ("test_matches_returnsEmptyArrayWhenNoMatches", test_matches_returnsEmptyArrayWhenNoMatches),
         ("test_matches_returnsEachMatch", test_matches_returnsEachMatch),
@@ -20,28 +19,28 @@ final class RegTests: XCTestCase {
         "^hey",
         "Oh no$",
         "\\d+",
-        "👪+"
+        "👪+",
     ]
 
     private let nonMatchingStrings: [String] = [
         "Oh hey",
         "No oh",
         "%*(())",
-        "🙍"
+        "🙍",
     ]
 
     private let matchingStrings: [String] = [
         "hey man",
         "No oh Oh no",
         "%*(4()45)203-",
-        "👪👪👪🙍👪👪👪👪"
+        "👪👪👪🙍👪👪👪👪",
     ]
 
     private let expectedResults: [[String]] = [
         ["hey"],
         ["Oh no"],
         ["4", "45", "203"],
-        ["👪👪👪", "👪👪👪👪"]
+        ["👪👪👪", "👪👪👪👪"],
     ]
 
     func test_matches_returnsEmptyArrayWhenNoMatches() {

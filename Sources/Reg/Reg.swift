@@ -50,20 +50,19 @@ public struct Regex: ExpressibleByStringLiteral {
     private func searchRange(for string: String) -> NSRange {
         return NSRange(location: 0, length: string.utf16.count)
     }
-
 }
 
 // MARK: Operator related
+
 infix operator =~
 infix operator !~
 
 extension Regex {
-
     public static func =~ (string: String, regex: Regex) -> Bool {
         return regex.hasMatch(in: string)
     }
 
-    public static func =~(regex: Regex, string: String) -> Bool {
+    public static func =~ (regex: Regex, string: String) -> Bool {
         return regex.hasMatch(in: string)
     }
 
@@ -71,7 +70,7 @@ extension Regex {
         return !regex.hasMatch(in: string)
     }
 
-    public static func !~(regex: Regex, string: String) -> Bool {
+    public static func !~ (regex: Regex, string: String) -> Bool {
         return !regex.hasMatch(in: string)
     }
 }
