@@ -40,8 +40,8 @@ public struct Regex: ExpressibleByStringLiteral {
                 range: searchRange(for: string)
             ),
             let matchRange = Range(match.range, in: string)
-            else {
-                return nil
+        else {
+            return nil
         }
 
         return String(string[matchRange])
