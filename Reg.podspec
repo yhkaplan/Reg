@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Reg'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = 'A convenient Ruby-like wrapper for NSRegularExpression'
   s.homepage         = 'https://github.com/yhkaplan/Reg'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
