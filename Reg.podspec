@@ -10,7 +10,6 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/yhkaplan'
   s.source_files = 'Sources/Reg/*.{swift,h,m}'
   s.frameworks = 'Foundation'
-  s.swift_version = '4.2.1'
   s.ios.deployment_target = '10.0'
   s.osx.deployment_target = '10.13'
 end
