@@ -13,6 +13,9 @@ final class RegTests: XCTestCase {
         ("test_hasMatchEqualsOperator_returnsTrueWhenMatches", test_hasMatchEqualsOperator_returnsTrueWhenMatches),
         ("test_hasMatchNotEqualsOperator_returnsTrueWhenNoMatches", test_hasMatchNotEqualsOperator_returnsTrueWhenNoMatches),
         ("test_hasMatchNotEqualsOperator_returnsFalseWhenMatches", test_hasMatchNotEqualsOperator_returnsFalseWhenMatches),
+        ("test_replacingOccurrences_replacesAllOccurrencesOfPattern", test_replacingOccurrences_replacesAllOccurrencesOfPattern),
+        ("test_captures_returnsEmptyWhenNoCapturesFound", test_captures_returnsEmptyWhenNoCapturesFound),
+        ("test_captures_returnsAllCapturesWhenCaptures", test_captures_returnsAllCapturesWhenCaptures),
     ]
 
     private let regexes: [Regex] = [
@@ -151,5 +154,35 @@ final class RegTests: XCTestCase {
             XCTAssertFalse(result1)
             XCTAssertFalse(result2)
         }
+    }
+
+    func test_replacingOccurrences_replacesAllOccurrencesOfPattern() {
+        let regex = Regex(#"a?\d+"#)
+        let string = "dskfj123lkdjfka123"
+        let expectedString = "dskfjzzzlkdjfkzzz"
+
+        let result = regex.replacingOccurrences(in: string, with: "zzz")
+
+        XCTAssertEqual(result, expectedString)
+    }
+
+    func test_captures_returnsEmptyWhenNoCapturesFound() {
+        let regex = Regex(#"a(\d+{5})"#)
+        let string = "dskfj123lkdjfka123"
+        let expectedCaptures: [String] = []
+
+        let result = regex.captures(in: string)
+
+        XCTAssertEqual(result, expectedCaptures)
+    }
+
+    func test_captures_returnsAllCapturesWhenCaptures() {
+        let regex = Regex(#"a(\d{5})"#)
+        let string = "dskfja12345lkdjfka123"
+        let expectedCaptures: [String] = ["a12345", "12345"]
+
+        let result = regex.captures(in: string)
+
+        XCTAssertEqual(result, expectedCaptures)
     }
 }
