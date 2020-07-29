@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "Reg",
+    platforms: [.macOS(.v10_10), .iOS(.v10), .tvOS(.v13), .watchOS(.v2)],
     products: [
         .library(
             name: "Reg",
