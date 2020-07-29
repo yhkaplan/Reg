@@ -47,8 +47,6 @@ public struct Regex: ExpressibleByStringLiteral {
         return String(string[matchRange])
     }
 
-    // TODO: add string extensions for each method
-    // TODO: add tests
     public func replacingOccurrences(in string: String, with replacement: String = "") -> String? {
         let range = searchRange(for: string)
         return nsRegularExpression?.stringByReplacingMatches(
