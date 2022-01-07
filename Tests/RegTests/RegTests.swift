@@ -2,22 +2,6 @@ import Reg // Only testing public funcs so no testable
 import XCTest
 
 final class RegTests: XCTestCase {
-    static var allTests = [
-        ("test_matches_returnsEmptyArrayWhenNoMatches", test_matches_returnsEmptyArrayWhenNoMatches),
-        ("test_matches_returnsEachMatch", test_matches_returnsEachMatch),
-        ("test_hasMatch_returnsFalseWhenNoMatches", test_hasMatch_returnsFalseWhenNoMatches),
-        ("test_hasMatch_returnsTrueWhenMatches", test_hasMatch_returnsTrueWhenMatches),
-        ("test_firstMatch_returnsNilWhenNoMatches", test_firstMatch_returnsNilWhenNoMatches),
-        ("test_firstMatch_returnsFirstMatchWhenMatches", test_firstMatch_returnsFirstMatchWhenMatches),
-        ("test_hasMatchEqualsOperator_returnsFalseWhenNoMatches", test_hasMatchEqualsOperator_returnsFalseWhenNoMatches),
-        ("test_hasMatchEqualsOperator_returnsTrueWhenMatches", test_hasMatchEqualsOperator_returnsTrueWhenMatches),
-        ("test_hasMatchNotEqualsOperator_returnsTrueWhenNoMatches", test_hasMatchNotEqualsOperator_returnsTrueWhenNoMatches),
-        ("test_hasMatchNotEqualsOperator_returnsFalseWhenMatches", test_hasMatchNotEqualsOperator_returnsFalseWhenMatches),
-        ("test_replacingOccurrences_replacesAllOccurrencesOfPattern", test_replacingOccurrences_replacesAllOccurrencesOfPattern),
-        ("test_captures_returnsEmptyWhenNoCapturesFound", test_captures_returnsEmptyWhenNoCapturesFound),
-        ("test_captures_returnsAllCapturesWhenCaptures", test_captures_returnsAllCapturesWhenCaptures),
-    ]
-
     private let regexes: [Regex] = [
         "^hey",
         "Oh no$",
