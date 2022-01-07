@@ -17,6 +17,7 @@ public struct Regex: ExpressibleByStringLiteral {
         pattern = string
     }
 
+    /// Returns all substrings matching expression
     public func matches(in string: String) -> [String] {
         let ranges = nsRegularExpression?
             .matches(in: string, options: [], range: searchRange(for: string))
@@ -28,10 +29,12 @@ public struct Regex: ExpressibleByStringLiteral {
             .map(String.init)
     }
 
+    /// Returns whether or not string has substring matching expression
     public func hasMatch(in string: String) -> Bool {
         return firstMatch(in: string) != nil
     }
 
+    /// Returns first string matching expression
     public func firstMatch(in string: String) -> String? {
         guard
             let match = nsRegularExpression?.firstMatch(
@@ -47,6 +50,7 @@ public struct Regex: ExpressibleByStringLiteral {
         return String(string[matchRange])
     }
 
+    /// Returns new string with all matches replaced
     public func replacingOccurrences(in string: String, with replacement: String = "") -> String? {
         let range = searchRange(for: string)
         return nsRegularExpression?.stringByReplacingMatches(
@@ -57,6 +61,7 @@ public struct Regex: ExpressibleByStringLiteral {
         )
     }
 
+    /// Returns all regex captures in string
     public func captures(in string: String) -> [String] {
         guard
             let checkingResult = nsRegularExpression?
@@ -83,18 +88,22 @@ infix operator =~
 infix operator !~
 
 extension Regex {
+    /// Convenient operator for hasMatch
     public static func =~ (string: String, regex: Regex) -> Bool {
         return regex.hasMatch(in: string)
     }
 
+    /// Convenient operator for hasMatch
     public static func =~ (regex: Regex, string: String) -> Bool {
         return regex.hasMatch(in: string)
     }
 
+    /// Convenient operator for `!hasMatch`
     public static func !~ (string: String, regex: Regex) -> Bool {
         return !regex.hasMatch(in: string)
     }
 
+    /// Convenient operator for `!hasMatch`
     public static func !~ (regex: Regex, string: String) -> Bool {
         return !regex.hasMatch(in: string)
     }
