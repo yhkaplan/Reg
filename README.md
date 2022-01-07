@@ -1,5 +1,7 @@
 # Reg
 
+[![Swift Version](https://img.shields.io/badge/Swift-5.5.x-orange.svg)]()
+
 Reg is a friendly wrapper for NSRegularExpression
 
 ## TLDR
@@ -22,9 +24,11 @@ let matchStr = "^gummy bears have no cares".firstMatch(in: str)
 
 ## Features
 
-### matches
-### hasMatch
-### firstMatch
-### Operators
-#### =~
-#### !~
+- matches
+- hasMatch
+- firstMatch
+- replacingOccurrences
+- captures
+- Operators
+    - =~
+    - !~
